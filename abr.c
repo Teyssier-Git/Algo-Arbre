@@ -262,7 +262,25 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-
+  if(a!=NULL){
+    ppile_t pile=creer_pile();
+    int fin=0;
+    pnoeud_t noeud=a;
+    while(fin!=1){
+      while(noeud!=NULL){
+        empiler(pile,noeud);
+        noeud=noeud->fgauche;
+      }
+      if(pile_vide(pile)){
+        fin=1;
+      }
+      else{
+        noeud=depiler(pile);
+        printf(" %d |", noeud->cle);
+        noeud=noeud->fdroite;
+      }
+    }
+  }
 }
 
 
